@@ -6,7 +6,7 @@
 ---
 
 ## Pipeline
-1. Obtain the hidden JSON API of the marketplace and call it to get the JSON of all makes and models
+1. Obtain the hidden API of the marketplace and call it to get the JSON of all makes and models
 2. Use the JSON to build targeted URLs for every make and model
 3. Parse by the hierarchy: URLs → Pages → Ads into a `.csv` file
 4. Clean and normalize the data using `Pandas`
