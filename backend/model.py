@@ -5,6 +5,7 @@ import pandas as pd
 from catboost import CatBoostRegressor, Pool
 from sklearn.model_selection import train_test_split
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 """
@@ -69,4 +70,35 @@ class CarPriceModel:
                 input_data[col] = input_data[col].str.lower()
         preds_log = self.model.predict(input_data)
         return np.expm1(preds_log)
+
+        def regression_error_report(self, percentiles=[50, 95], thresholds=[5, 10]):
+        y, X = self.build_dataset()
+        y = np.log1p(y)
+        X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.05, random_state=42)
+        y_pred = self.model.predict(X_val)
+        errors_percent = np.abs(y_val - y_pred) / y_val * 100
+
+        print("=== Regression Error Report ===")
+        for q in percentiles:
+            q_val = np.percentile(errors_percent, q)
+            print(f"{q}th percentile error: {q_val:.2f}%")
+
+        median_error = np.median(errors_percent)
+        mean_error = np.mean(errors_percent)
+        print(f"Median error: {median_error:.2f}%")
+        print(f"Mean error: {mean_error:.2f}%")
+
+        for t in thresholds:
+            pct = (errors_percent <= t).sum() / len(errors_percent) * 100
+            print(f"Percentage of cars with error <= {t}%: {pct:.2f}%")
+
+        # Гистограмма распределения ошибок
+        plt.figure(figsize=(8, 5))
+        plt.hist(errors_percent, bins=100, color='skyblue', edgecolor='black')
+        plt.xlabel("Percentage error")
+        plt.ylabel("Number of cars")
+        plt.title("Distribution of prediction errors (%)")
+        plt.show()
+
+        return errors_percent
 
