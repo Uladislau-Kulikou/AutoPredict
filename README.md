@@ -54,7 +54,7 @@ The frontend is written in C# using WinForms. Once compiled as an `.exe`, it com
 ---
 
 ## How to compile
-1. Run `main.py` with `build_release = True`  
+1. Run `main.py` with `train_model = True` and `build_release = True`  
 2. Compile the C# client in Visual Studio: Build → Publish Selection → Publish with **ProduceSingleFile** checked  
 3. Move the created `exe` to `backend/Release/App`
 
