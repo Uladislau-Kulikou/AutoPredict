@@ -57,3 +57,19 @@ The frontend is written in C# using WinForms. Once compiled as an `.exe`, it com
 1. Run `main.py` with `build_release = True`  
 2. Compile the C# client in Visual Studio: Build → Publish Selection → Publish with **ProduceSingleFile** checked  
 3. Move the created `exe` to `backend/Release/App`
+
+
+---
+
+## Download
+
+You can download the latest compiled version of **AutoPredict** here:  
+👉 [Latest Release](https://github.com/Uladislau-Kulikou/AutoPredict/releases/latest)
+
+The release contains:
+- `predict.exe` (Python backend)
+- `AutoPredict.exe` (C# WinForms client)
+- All necessary runtime files packed in one archive
+
+> ⚠️ Note: Only Windows is supported for now. No need to install Python or additional libraries — just download, unpack and run `AutoPredict.exe`.
+
