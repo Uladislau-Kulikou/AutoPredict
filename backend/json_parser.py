@@ -18,7 +18,7 @@ def read_json_file(path: Path) -> dict:
         print(f"JSON Decoding error in {path}: {e}")
         return {}
 
-def car_iter() -> tuple[str, str, str]:
+def car_iter() -> tuple[str, str]:
     file_path = Path("data/makes_models.json")
     content = read_json_file(file_path)
     if not content:
@@ -26,3 +26,4 @@ def car_iter() -> tuple[str, str, str]:
     for brand, models_dict in content.items():
         for model in models_dict.keys():
            yield brand, model
+
