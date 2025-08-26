@@ -71,7 +71,7 @@ class CarPriceModel:
         preds_log = self.model.predict(input_data)
         return np.expm1(preds_log)
 
-        def regression_error_report(self, percentiles=[50, 95], thresholds=[5, 10]):
+    def regression_error_report(self, percentiles=[50, 95], thresholds=[5, 10]):
         y, X = self.build_dataset()
         y = np.log1p(y)
         X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.05, random_state=42)
@@ -101,4 +101,5 @@ class CarPriceModel:
         plt.show()
 
         return errors_percent
+
 
