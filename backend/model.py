@@ -92,7 +92,7 @@ class CarPriceModel:
             pct = (errors_percent <= t).sum() / len(errors_percent) * 100
             print(f"Percentage of cars with error <= {t}%: {pct:.2f}%")
 
-        # Гистограмма распределения ошибок
+        # Error distribution histogram
         plt.figure(figsize=(8, 5))
         plt.hist(errors_percent, bins=100, color='skyblue', edgecolor='black')
         plt.xlabel("Percentage error")
